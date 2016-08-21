@@ -18,7 +18,9 @@
 # Return the resulting string.
 def verbing(s):
     # +++your code here+++
-    return
+    if len(s) >= 3:
+        s += ('ly' if s[-3:] == 'ing' else 'ing')
+    return s
 
 
 # E. not_bad
@@ -31,7 +33,15 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
     # +++your code here+++
-    return
+
+    indexNot = s.find('not')
+    indexBad = s.find('bad')
+
+    if indexNot > -1 and indexBad > -1 and indexNot < indexBad:
+        s1 = s[0:s.find('not')]
+        s2 = s[s.find('bad')+3:len(s)]
+        s = '%s%s%s' % (s1, 'good', s2)
+    return s
 
 
 # F. front_back
@@ -43,7 +53,19 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
     # +++your code here+++
-    return
+
+    #test(front_back('abcd', 'xy'), 'abxcdy')
+    #test(front_back('abcde', 'xyz'), 'abcxydez')
+    #test(front_back('Kitten', 'Donut'), 'KitDontenut')
+
+    metade = lambda x : int(len(x)/2 if len(x)%2 == 0 else (len(x)+1)/2) 
+    metadoA, metadoB = metade(a), metade(b)
+
+    newstr = ''
+    newstr += '%s%s' % (a[0:metadoA], b[0:metadoB])
+    newstr += '%s%s' % (a[metadoA:], b[metadoB:])
+
+    return newstr
 
 
 # Simple provided test() function used in main() to print
