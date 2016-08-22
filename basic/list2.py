@@ -17,9 +17,13 @@ def remove_adjacent(nums):
     # +++your code here+++
     # return list(set(nums))
     not_repeat = []
-    for x in nums:
-        if x not in not_repeat:
-            not_repeat.append(x)
+    size = len(nums)
+    for x in range(size):
+        if x < size-1:
+            if nums[x] != nums[x+1]:
+                not_repeat.append(nums[x])
+        else:
+            not_repeat.append(nums[x])
     return not_repeat
 
 
