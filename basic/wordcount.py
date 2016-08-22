@@ -37,7 +37,7 @@ print_words() and print_top().
 
 """
 
-import sys
+import sys, re
 
 
 # +++your code here+++
@@ -47,6 +47,30 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 
 ###
+
+def count_words(filename):
+    maps = dict();
+    with open(filename, 'r') as file:
+        for line in file.readlines():
+            words = re.findall(r'\w+', line.lower())
+            for key in words:
+                if not maps.get(key):
+                    maps[key] = 1
+                else:
+                    maps[key] += 1
+    return maps
+
+def print_words(filename):
+    maps = count_words(filename)
+    for word in maps.items():
+        print(word)
+
+def print_top(filename):
+    maps = count_words(filename)
+    top = sorted(maps.items(), key=lambda x: x[1], reverse=True)
+    for i in range(20):
+        print(top[i])
+    
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.

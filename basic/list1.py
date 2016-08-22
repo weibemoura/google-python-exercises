@@ -39,14 +39,13 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
     # +++your code here+++
-    index = 0
-    words.sort()
-    for w in words:
+    first, last = [], []
+    for w in sorted(words):
         if w[0] == 'x':
-            words.remove(w)
-            words.insert(index, w)
-            index += 1
-    return words
+            first.append(w)
+        else:
+            last.append(w)
+    return first + last
 
 
 # C. sort_last
@@ -56,17 +55,7 @@ def front_x(words):
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
-    # +++your code here+++
-    #test(sort_last([(1, 3), (3, 2), (2, 1)]),
-    #     [(2, 1), (3, 2), (1, 3)])
-    #test(sort_last([(2, 3), (1, 2), (3, 1)]),
-    #     [(3, 1), (1, 2), (2, 3)])
-    #test(sort_last([(1, 7), (1, 3), (3, 4, 5), (2, 2)]),
-    #     [(2, 2), (1, 3), (3, 4, 5), (1, 7)])
-
-    tuples.sort(key=lambda x : x[1])
-
-    return tuples
+    return sorted(tuples, key=lambda x : x[-1])
 
 
 # Simple provided test() function used in main() to print

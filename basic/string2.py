@@ -34,10 +34,10 @@ def verbing(s):
 def not_bad(s):
     # +++your code here+++
 
-    indexNot = s.find('not')
-    indexBad = s.find('bad')
+    find_not = s.find('not')
+    find_bad = s.find('bad')
 
-    if indexNot > -1 and indexBad > -1 and indexNot < indexBad:
+    if find_not < find_bad:
         s1 = s[0:s.find('not')]
         s2 = s[s.find('bad')+3:len(s)]
         s = '%s%s%s' % (s1, 'good', s2)
@@ -59,11 +59,11 @@ def front_back(a, b):
     #test(front_back('Kitten', 'Donut'), 'KitDontenut')
 
     metade = lambda x : int(len(x)/2 if len(x)%2 == 0 else (len(x)+1)/2) 
-    metadoA, metadoB = metade(a), metade(b)
+    metade_a, metade_b = metade(a), metade(b)
 
     newstr = ''
-    newstr += '%s%s' % (a[0:metadoA], b[0:metadoB])
-    newstr += '%s%s' % (a[metadoA:], b[metadoB:])
+    newstr += '%s%s' % (a[0:metade_a], b[0:metade_b])
+    newstr += '%s%s' % (a[metade_a:], b[metade_b:])
 
     return newstr
 
