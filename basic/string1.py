@@ -36,9 +36,10 @@ def donuts(count):
 # is less than 2, return instead the empty string.
 def both_ends(s):
     # +++your code here+++
-    if len(s) > 2:
-        return '%s%s' % (s[0:2], s[-2:])
-    return ''
+    # if len(s) > 2:
+    #     return '%s%s' % (s[0:2], s[-2:])
+    # return ''
+    return s[:2] + s[-2:] if len(s) > 1 else ''
 
 
 # C. fix_start
@@ -52,8 +53,10 @@ def both_ends(s):
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
     # +++your code here+++
-    newstr = s.replace(s[0], '*')
-    return '%s%s' % (s[0], newstr[1:])
+    # newstr = s.replace(s[0], '*')
+    # return '%s%s' % (s[0], newstr[1:])
+    head, tail = s[0], s[1:]
+    return head + tail.replace(head, '*')
 
 
 # D. MixUp
@@ -66,9 +69,12 @@ def fix_start(s):
 def mix_up(a, b):
     # +++your code here+++
     # test(mix_up('mix', 'pod'), 'pox mid')
-    s1 = '%s%s' % (b[0:2], a[2:])
-    s2 = '%s%s' % (a[0:2], b[2:])
-    return '%s %s' % (s1, s2)
+    # s1 = '%s%s' % (b[0:2], a[2:])
+    # s2 = '%s%s' % (a[0:2], b[2:])
+    # return '%s %s' % (s1, s2)
+    pre = (b[:2] + a[2:])
+    pos = (a[:2] + b[2:])
+    return ' '.join([pre, pos])
 
 
 # Provided simple test() function used in main() to print
