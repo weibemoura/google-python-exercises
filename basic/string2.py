@@ -34,13 +34,13 @@ def verbing(s):
 def not_bad(s):
     # +++your code here+++
 
-    find_not = s.find('not')
-    find_bad = s.find('bad')
+    not_index = s.find('not')
+    bad_index = s.find('bad')
 
-    if find_not < find_bad:
+    if not_index < bad_index:
         s1 = s[0:s.find('not')]
         s2 = s[s.find('bad')+3:len(s)]
-        s = '%s%s%s' % (s1, 'good', s2)
+        s = ''.join([s1, 'good', s2])
     return s
 
 
@@ -53,12 +53,7 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
     # +++your code here+++
-
-    #test(front_back('abcd', 'xy'), 'abxcdy')
-    #test(front_back('abcde', 'xyz'), 'abcxydez')
-    #test(front_back('Kitten', 'Donut'), 'KitDontenut')
-
-    metade = lambda x : int(len(x)/2 if len(x)%2 == 0 else (len(x)+1)/2) 
+    metade = lambda x: (len(x)+1) // 2
     metade_a, metade_b = metade(a), metade(b)
 
     newstr = ''
